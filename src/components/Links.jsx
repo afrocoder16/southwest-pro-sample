@@ -1,14 +1,23 @@
+import { Link } from 'react-router-dom';
 import { site } from '../data/site';
 import { Arrow, Phone, Mail } from './Icons';
 
-/** Every estimate button on the site goes to Ryan's existing free-estimate route. */
-export function EstimateLink({ className = 'btn btn-orange', children = 'Free estimate', where = 'cta' }) {
+/** Every "Free estimate" button goes to the estimate form on this site. */
+export function EstimateLink({ className = 'btn btn-orange', children = 'Free estimate', where = 'cta', arrow = true, onClick }) {
   return (
-    <a className={className} href={site.estimateUrl} target="_blank" rel="noopener noreferrer" data-estimate={where}>
+    <Link className={className} to="/estimate" data-estimate={where} onClick={onClick}>
       {children}
-      <Arrow />
-      <span className="vh"> (opens Ryan’s free estimate form on southwestpro.com in a new tab)</span>
-    </a>
+      {arrow && <Arrow />}
+    </Link>
+  );
+}
+
+export function MessageLink({ className = 'btn btn-line', children = 'Send us a message', where = 'message' }) {
+  return (
+    <Link className={className} to="/contact" data-message={where}>
+      <Mail />
+      {children}
+    </Link>
   );
 }
 
@@ -17,16 +26,6 @@ export function CallLink({ className = 'btn btn-line', children, where = 'call' 
     <a className={className} href={site.phoneHref} data-call={where}>
       <Phone />
       {children ?? <>Call {site.phoneDisplay}</>}
-    </a>
-  );
-}
-
-export function EmailLink({ className = 'btn btn-line', children, subject = 'Free estimate request', body = '', where = 'email' }) {
-  const href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}${body ? `&body=${encodeURIComponent(body)}` : ''}`;
-  return (
-    <a className={className} href={href} data-email={where}>
-      <Mail />
-      {children ?? 'Email Ryan'}
     </a>
   );
 }

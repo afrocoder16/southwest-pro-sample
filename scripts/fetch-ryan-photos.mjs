@@ -8,6 +8,7 @@ const dir = path.resolve('.cache/ryan-orig');
 fs.mkdirSync(dir, { recursive: true });
 
 for (const p of photos) {
+  if (p.local) continue; // supplied locally, nothing to download
   const out = path.join(dir, `${p.id}.jpg`);
   if (fs.existsSync(out) && fs.statSync(out).size > 1000) { console.log('have', p.id); continue; }
   const url = `https://static.wixstatic.com/media/${p.wix}`;

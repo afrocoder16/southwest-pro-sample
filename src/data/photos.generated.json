@@ -236,5 +236,154 @@
       1600
     ],
     "color": "#b0ac89"
+  },
+  "house-before": {
+    "w": 720,
+    "h": 960,
+    "sizes": [
+      480,
+      720
+    ],
+    "color": "#9b9578"
+  },
+  "house-after": {
+    "w": 1086,
+    "h": 1448,
+    "sizes": [
+      480,
+      960,
+      1086
+    ],
+    "color": "#3f5877"
+  },
+  "barn-before": {
+    "w": 720,
+    "h": 960,
+    "sizes": [
+      480,
+      720
+    ],
+    "color": "#8f3a33"
+  },
+  "barn-after": {
+    "w": 1086,
+    "h": 1448,
+    "sizes": [
+      480,
+      960,
+      1086
+    ],
+    "color": "#b3322c"
+  },
+  "door-before": {
+    "w": 720,
+    "h": 960,
+    "sizes": [
+      480,
+      720
+    ],
+    "color": "#8a5a3a"
+  },
+  "door-after": {
+    "w": 1086,
+    "h": 1448,
+    "sizes": [
+      480,
+      960,
+      1086
+    ],
+    "color": "#a0612c"
+  },
+  "kitchen-before": {
+    "w": 443,
+    "h": 590,
+    "sizes": [
+      443
+    ],
+    "color": "#9a4a2a"
+  },
+  "kitchen-after": {
+    "w": 443,
+    "h": 590,
+    "sizes": [
+      443
+    ],
+    "color": "#e8e4dc"
+  },
+  "whitebarn-before": {
+    "w": 960,
+    "h": 717,
+    "sizes": [
+      480,
+      960
+    ],
+    "color": "#cfcac0"
+  },
+  "whitebarn-after": {
+    "w": 1086,
+    "h": 1448,
+    "sizes": [
+      480,
+      960,
+      1086
+    ],
+    "color": "#f0f0ee"
+  },
+  "whitebarn-side": {
+    "w": 1086,
+    "h": 1448,
+    "sizes": [
+      480,
+      960,
+      1086
+    ],
+    "color": "#f0f0ee"
+  },
+  "cedar-before": {
+    "w": 720,
+    "h": 960,
+    "sizes": [
+      480,
+      720
+    ],
+    "color": "#c47a38"
+  },
+  "cedar-after": {
+    "w": 1086,
+    "h": 1448,
+    "sizes": [
+      480,
+      960,
+      1086
+    ],
+    "color": "#bf6f2e"
+  },
+  "garage-before": {
+    "w": 720,
+    "h": 960,
+    "sizes": [
+      480,
+      720
+    ],
+    "color": "#8e2a2b"
+  },
+  "garage-after": {
+    "w": 1086,
+    "h": 1448,
+    "sizes": [
+      480,
+      960,
+      1086
+    ],
+    "color": "#b02a28"
+  },
+  "social-pair": {
+    "w": 960,
+    "h": 540,
+    "sizes": [
+      480,
+      960
+    ],
+    "color": "#3f5877"
   }
 }

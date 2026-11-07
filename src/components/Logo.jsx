@@ -1,5 +1,5 @@
 /**
- * Recreated wordmark (not a copy of Ryan's logo file): "southwest" + blue "pro", a roof line above,
+ * Recreated wordmark (not a copy of the company's logo file): "southwest" + blue "pro", a roof line above,
  * and "painting" tucked under. Colors follow his logo: charcoal and blue.
  */
 export default function Logo({ inverted = false }) {

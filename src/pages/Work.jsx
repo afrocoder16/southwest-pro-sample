@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ChipCard, Lightbox } from '../components/Photo';
 import { BeforeAfter, EstimatePanel } from '../components/Estimate';
+import { BeforeAfterViewer } from '../components/Compare';
 import { projectTypes, projectById, allPhotoIds } from '../data/work';
 
 export default function Work() {
@@ -32,9 +33,9 @@ export default function Work() {
       <section className="page-hero compact" aria-labelledby="h1">
         <div className="wrap">
           <span className="tape">Our work</span>
-          <h1 className="h-xl" id="h1">Real jobs from Ryan’s portfolio.</h1>
+          <h1 className="h-xl" id="h1">Real jobs from our portfolio.</h1>
           <p className="lead">
-            Every photo here comes from Ryan’s own site. Filter by what you’re painting, and tap a photo to enlarge it.
+            Filter by what you’re painting, and tap a photo to enlarge it. Scroll down for before and afters.
           </p>
         </div>
       </section>
@@ -65,11 +66,19 @@ export default function Work() {
         <div className="wrap">
           <div className="head">
             <span className="tape is-orange">Before and after</span>
-            <h2 className="h-lg" id="ba-h">Two jobs, start to finish.</h2>
+            <h2 className="h-lg" id="ba-h">Start to finish.</h2>
+            <p className="lead">Drag the roller to paint in the after. Jobs shot from different angles swap with a wipe instead.</p>
           </div>
-          <div className="ba-stack">
-            <BeforeAfter pairId="siding" onOpen={(i, x) => setLb({ ids: i, index: x })} />
-            <BeforeAfter pairId="corner" onOpen={(i, x) => setLb({ ids: i, index: x })} />
+          <div className="work-ba">
+            <BeforeAfterViewer id="work-viewer" />
+            <div className="ba-stack">
+              <BeforeAfter pairId="siding" onOpen={(i, x) => setLb({ ids: i, index: x })} />
+              <BeforeAfter pairId="corner" onOpen={(i, x) => setLb({ ids: i, index: x })} />
+              <div className="ba">
+                <h3 className="h-md">Side by side</h3>
+                <ChipCard id="social-pair" onOpen={() => setLb({ ids: ['social-pair'], index: 0 })} ratio="16 / 9" sizes="(min-width: 900px) 540px, 90vw" />
+              </div>
+            </div>
           </div>
         </div>
       </section>

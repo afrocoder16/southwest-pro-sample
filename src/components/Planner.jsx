@@ -14,7 +14,7 @@ export const ZONES = [
   { id: 'doors', label: 'Doors and frames' },
   { id: 'int-walls', label: 'Interior walls' },
   { id: 'ceilings', label: 'Ceilings' },
-  { id: 'floors', label: 'Concrete floors' }, // "Concrete Floors" is on Ryan's interior service list
+  { id: 'floors', label: 'Concrete floors' }, // "Concrete Floors" is on the interior service list
 ];
 
 const PROPERTY_TYPES = [

@@ -10,7 +10,7 @@ const KEY = 'swp-estimate-notes';
 const empty = {
   project: null, // id from projectTypes
   services: [], // chosen service names
-  colors: null, // { siding, trim, door } names from the try-on
+  offer: null, // title of a (sample) offer the visitor chose
   zones: [], // storefront walk-through zones
   propertyType: '',
   propertyTouched: false, // true once the visitor chooses a property type themselves

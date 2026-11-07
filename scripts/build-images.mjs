@@ -23,8 +23,8 @@ async function patchColor(buf, W, H, [x, y]) {
 }
 
 for (const p of photos) {
-  const file = path.join(src, `${p.id}.jpg`);
-  if (!fs.existsSync(file)) throw new Error(`Missing ${file}. Run: npm run photos:fetch`);
+  const file = p.local ? path.resolve(p.local) : path.join(src, `${p.id}.jpg`);
+  if (!fs.existsSync(file)) throw new Error(`Missing ${file}. ${p.local ? 'Expected the supplied photo folder next to web/.' : 'Run: npm run photos:fetch'}`);
   let base = sharp(file).rotate(); // apply EXIF orientation, metadata is dropped on output
   const info0 = await base.clone().toBuffer({ resolveWithObject: true });
   let W = info0.info.width, H = info0.info.height;

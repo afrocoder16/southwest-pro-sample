@@ -8,6 +8,9 @@ import Homes from './pages/Homes';
 import Business from './pages/Business';
 import Work from './pages/Work';
 import About from './pages/About';
+import Estimate from './pages/Estimate';
+import Contact from './pages/Contact';
+import Careers from './pages/Careers';
 import NotFound from './pages/NotFound';
 
 const TITLES = {
@@ -15,7 +18,10 @@ const TITLES = {
   '/homes': 'Home painting | Southwest Pro Painting',
   '/business': 'Business painting | Southwest Pro Painting',
   '/work': 'Our work | Southwest Pro Painting',
-  '/about': 'About Ryan | Southwest Pro Painting',
+  '/about': 'About us | Southwest Pro Painting',
+  '/estimate': 'Free estimate | Southwest Pro Painting',
+  '/contact': 'Contact us | Southwest Pro Painting',
+  '/careers': 'Now hiring | Southwest Pro Painting',
 };
 
 function PageEffects() {
@@ -47,6 +53,9 @@ export default function App() {
           <Route path="/business" element={<Business />} />
           <Route path="/work" element={<Work />} />
           <Route path="/about" element={<About />} />
+          <Route path="/estimate" element={<Estimate />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

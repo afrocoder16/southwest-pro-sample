@@ -2,14 +2,16 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import Logo from './Logo';
 import { CallLink, EstimateLink } from './Links';
-import { Close, Menu, Phone, Arrow, External } from './Icons';
+import { Close, Menu, Phone } from './Icons';
 import { site } from '../data/site';
+import { Arrow } from './Icons';
 
 const nav = [
   { to: '/homes', label: 'Homes' },
   { to: '/business', label: 'Business' },
   { to: '/work', label: 'Our work' },
-  { to: '/about', label: 'About' },
+  { to: '/about', label: 'About us' },
+  { to: '/careers', label: 'Now hiring' },
 ];
 
 export function Header() {
@@ -20,7 +22,7 @@ export function Header() {
   useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
-    if (!open) return;
+    if (!open) return undefined;
     const onKey = (e) => {
       if (e.key === 'Escape') {
         setOpen(false);
@@ -106,18 +108,18 @@ export function Footer() {
         <div>
           <Logo inverted />
           <p className="footer-blurb">
-            Interior and exterior painting for homes and businesses in {site.region}. Free estimates.
+            Interior and exterior painting for homes and businesses in {site.region}. {`Free estimates all year round.`}
           </p>
         </div>
         <div>
           <h2 className="footer-h">Contact</h2>
           <ul className="footer-list">
-            <li>{site.owner}</li>
+            <li>{site.legal}</li>
             <li>
               <a href={site.phoneHref}>{site.phoneDisplay}</a>
             </li>
             <li>
-              <a href={`mailto:${site.email}`}>{site.email}</a>
+              <Link to="/contact">Send us a message</Link>
             </li>
           </ul>
         </div>
@@ -127,29 +129,22 @@ export function Footer() {
             <li><Link to="/homes">Homes</Link></li>
             <li><Link to="/business">Business</Link></li>
             <li><Link to="/work">Our work</Link></li>
-            <li><Link to="/about">About Ryan</Link></li>
+            <li><Link to="/about">About us</Link></li>
           </ul>
         </div>
         <div>
           <h2 className="footer-h">Next step</h2>
           <ul className="footer-list">
-            <li>
-              <a href={site.estimateUrl} target="_blank" rel="noopener noreferrer">
-                Free estimate form <External className="inline-ic" />
-              </a>
-            </li>
-            <li>
-              <a href={site.hiringUrl} target="_blank" rel="noopener noreferrer">
-                Hiring: Ryan’s application page <External className="inline-ic" />
-              </a>
-            </li>
+            <li><Link to="/estimate">Free estimate form</Link></li>
+            <li><Link to="/careers">Now hiring: apply</Link></li>
           </ul>
         </div>
       </div>
       <div className="wrap footer-note">
         <p>
-          <strong>Design sample.</strong> This is a private concept prepared for Southwest Pro Painting. It is not the
-          live website. Photos and the customer quote come from southwestpro.com.
+          <strong>Design sample.</strong> This is a private concept prepared for {site.name}. It is not the live
+          website, and none of its forms send anything. Photos and customer comments come from the company’s own pages
+          and files.
         </p>
       </div>
     </footer>

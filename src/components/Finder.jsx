@@ -38,6 +38,12 @@ export function Finder({ value, onChange }) {
                   <span className="pick-dot" aria-hidden="true" />
                 </label>
               ))}
+            {g.key === 'business' && (
+              <Link className="pick-link" to="/estimate">
+                <span className="pick-label">Not sure? Tell us what you’re painting</span>
+                <span className="pick-hint">Free estimate <Arrow aria-hidden="true" /></span>
+              </Link>
+            )}
           </fieldset>
         ))}
       </div>
@@ -57,7 +63,7 @@ export function Finder({ value, onChange }) {
           </>
         ) : (
           <p className="muted">
-            Pick one to see Ryan’s real jobs that look like yours.
+            Pick one to see our real jobs that look like yours.
           </p>
         )}
       </div>

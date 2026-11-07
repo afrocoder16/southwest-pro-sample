@@ -1507,3 +1507,11 @@
     margin-right: 1rem;
   }
 }
+
+
+/* ---------- performance: don't lay out or paint sections that are far off screen ---------- */
+main > section:not(.hero):not(.fall):not(.page-hero),
+.site-footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 760px;
+}

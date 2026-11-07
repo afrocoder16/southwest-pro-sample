@@ -35,6 +35,25 @@ export const photos = [
   { id: 'corner-after',   wix: 'dc6511_109a4f27b5fd4f66b8a36c28a95b1578.jpg', swatch: [0.28, 0.5] },
   { id: 'ambulance',      wix: 'dc6511_36953c5da0c84f15aa8c2cad3ec47fff.jpg', swatch: [0.9, 0.42] },
   { id: 'interior-blue',  wix: 'dc6511_d7abd893339b43808e7a49d0e6b63933.jpg', swatch: [0.25, 0.5] },
+
+  // ---- Added 7 Nov 2026: before/after photos supplied by the project owner (folder ../pics, left untouched).
+  // `local` is a path relative to the web folder. The id is the clearer name used on the site.
+  { id: 'house-before',       local: '../pics/before6.jpg',   color: '#9b9578' },
+  { id: 'house-after',        local: '../pics/after6.png',    color: '#3f5877' },
+  { id: 'barn-before',        local: '../pics/before4.1.jpg', color: '#8f3a33' },
+  { id: 'barn-after',         local: '../pics/after4.3.png',  color: '#b3322c' },
+  { id: 'door-before',        local: '../pics/before2.jpg',   color: '#8a5a3a' },
+  { id: 'door-after',         local: '../pics/after2.png',    color: '#a0612c' },
+  { id: 'kitchen-before',     local: '../pics/before1.jpg',   color: '#9a4a2a' },
+  { id: 'kitchen-after',      local: '../pics/after1.jpg',    color: '#e8e4dc' },
+  { id: 'whitebarn-before',   local: '../pics/before5.jpg',   color: '#cfcac0' },
+  { id: 'whitebarn-after',    local: '../pics/after5.png',    color: '#f0f0ee' },
+  { id: 'whitebarn-side',     local: '../pics/after5.1.png',  color: '#f0f0ee' },
+  { id: 'cedar-before',       local: '../pics/before3.jpg',   color: '#c47a38' },
+  { id: 'cedar-after',        local: '../pics/after3.png',    color: '#bf6f2e' },
+  { id: 'garage-before',      local: '../pics/before4.2.jpg', color: '#8e2a2b' },
+  { id: 'garage-after',       local: '../pics/after4.4.png',  color: '#b02a28' },
+  { id: 'social-pair',        local: '../pics/pics.jpg',      color: '#3f5877' },
 ];
 
 export const widths = [480, 960, 1600];
