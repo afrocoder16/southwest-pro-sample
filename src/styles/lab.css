@@ -1,0 +1,552 @@
+/* ---------- Prep Lab ---------- */
+.lab {
+  position: relative;
+  overflow: clip;
+}
+.lab::before {
+  content: '';
+  position: absolute;
+  left: -12vw;
+  top: -12vw;
+  width: min(48vw, 600px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(24, 128, 192, 0.3), transparent 70%);
+  pointer-events: none;
+}
+.lab-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+.lab-stage {
+  display: grid;
+  gap: 18px;
+  align-self: start;
+  position: sticky;
+  top: calc(var(--header-h) + 18px);
+}
+.lab-art {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -28px rgba(0, 0, 0, 0.7);
+  background: #cfe3ee;
+}
+.lab-step-tape {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  z-index: 2;
+  font-size: 0.8rem;
+}
+.lab-badge {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  background: var(--orange);
+  color: var(--ink);
+  font: 800 0.82rem/1 var(--body);
+  opacity: 0;
+  transform: translateY(-8px) scale(0.95);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.lab-badge svg {
+  width: 1em;
+  height: 1em;
+}
+.lab-badge.on {
+  opacity: 1;
+  transform: none;
+}
+.lab-caption {
+  position: absolute;
+  left: 14px;
+  bottom: 10px;
+  z-index: 2;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #2b3138;
+  background: rgba(255, 255, 255, 0.78);
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+}
+
+/* color pickers */
+.lab-colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+}
+.swatches {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  display: grid;
+  gap: 8px;
+}
+.swatches legend {
+  padding: 0;
+  margin-bottom: 8px;
+  font: 800 0.72rem/1 var(--body);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9fb3c3;
+}
+.swatches > div {
+  display: flex;
+  gap: 8px;
+}
+.sw {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+.sw input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.sw-dot {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+  color: transparent;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  transition: transform 0.18s var(--ease), border-color 0.18s;
+}
+.sw-dot svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 3;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.6));
+}
+.sw:hover .sw-dot {
+  transform: scale(1.08);
+}
+.sw input:checked + .sw-dot {
+  border-color: #fff;
+  color: #fff;
+  box-shadow: 0 0 0 2px var(--night), inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+.sw input:focus-visible + .sw-dot {
+  outline: 3px solid var(--sky);
+  outline-offset: 3px;
+}
+.sw-name {
+  font-size: 0.85rem;
+  color: #c7d5e0;
+  font-weight: 600;
+}
+
+/* controls and step list */
+.lab-side {
+  display: grid;
+  gap: 20px;
+}
+.lab-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+.lab-arrows {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.icon-btn svg {
+  width: 20px;
+}
+.icon-btn:hover:not(:disabled) {
+  background: #fff;
+  color: var(--ink);
+}
+.lab button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.lab-steps {
+  list-style: none;
+  display: grid;
+  gap: 4px;
+}
+.lab-steps li {
+  border-radius: 14px;
+  transition: background 0.2s;
+}
+.lab-steps button {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2.4rem 1fr;
+  gap: 0.9rem;
+  align-items: center;
+  text-align: left;
+  padding: 0.55rem 0.7rem;
+  background: transparent;
+  border: 0;
+  color: #c7d5e0;
+  cursor: pointer;
+  border-radius: 14px;
+  min-height: 48px;
+}
+.lab-steps button:hover {
+  color: #fff;
+}
+.lab-steps .num {
+  width: 2.2rem;
+  height: 2.2rem;
+  background: transparent;
+  border: 2px solid #5f7a8f;
+  color: #c7d5e0;
+  font-size: 0.95rem;
+}
+.lab-steps .ttl {
+  font: 700 1.02rem/1.2 var(--body);
+}
+.lab-steps li.is-done .num {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+.lab-steps li.is-on {
+  background: rgba(255, 255, 255, 0.08);
+}
+.lab-steps li.is-on button {
+  color: #fff;
+}
+.lab-steps li.is-on .num {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--ink);
+}
+.lab-steps li p {
+  padding: 0 0.7rem 0.85rem 3.9rem;
+  color: #dbe6ee;
+  font-size: 0.98rem;
+  animation: panelIn 0.35s var(--ease);
+}
+.lab-proof {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+}
+.lab-proof-h {
+  font: 800 0.72rem/1 var(--body);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sky);
+}
+.lab-proof-pics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.lab-proof figure {
+  margin: 0;
+  display: grid;
+  gap: 6px;
+  opacity: 0.45;
+  filter: grayscale(0.5);
+  transition: opacity 0.5s var(--ease), filter 0.5s var(--ease), transform 0.5s var(--ease);
+}
+.lab-proof figure.is-lit {
+  opacity: 1;
+  filter: none;
+  transform: translateY(-3px);
+}
+.lab-proof img {
+  width: 100%;
+  border-radius: 8px;
+  aspect-ratio: 16 / 10 !important;
+}
+.lab-proof figcaption {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #dbe6ee;
+}
+.lab-proof .small {
+  color: #9fb3c3;
+  font-size: 0.8rem;
+}
+
+/* ---------- the house illustration: every step is a CSS state ---------- */
+.house {
+  width: 100%;
+  height: auto;
+  display: block;
+  --sd-base: #b3ae9f;
+  --tr: #d9d2bd;
+  --dr: #8d887b;
+}
+.house .sd-base {
+  fill: var(--sd-base);
+  transition: fill 0.8s var(--ease);
+}
+.house .paint-finish {
+  fill: var(--siding);
+  clip-path: url(#h-wipe);
+  transition: fill 0.5s var(--ease);
+}
+.house .wipe {
+  transform-box: fill-box;
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+.house .tr {
+  fill: var(--tr);
+  transition: fill 0.8s var(--ease);
+}
+.house .tr-stroke {
+  stroke: var(--tr);
+  transition: stroke 0.8s var(--ease);
+}
+.house .door {
+  fill: var(--dr);
+  transition: fill 0.8s var(--ease);
+}
+.house .glass {
+  fill: #a9cfe3;
+}
+.house .mullion {
+  stroke: #e9edee;
+  stroke-width: 3;
+}
+.house .shine {
+  stroke: #fff;
+  stroke-opacity: 0.45;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+/* weathering layers */
+.house .peel path {
+  fill: #cba67a;
+  stroke: #e3ded0;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  transition: fill 0.5s, stroke 0.5s;
+}
+.house .peel,
+.house .grime,
+.house .caulk,
+.house .flakes,
+.house .dropcloth,
+.house .ladder,
+.house .can,
+.house .roller,
+.house .sparkle {
+  opacity: 0;
+  transition: opacity 0.6s var(--ease);
+}
+.house .caulk rect {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 2 6;
+}
+.house .flakes path {
+  fill: #e3ded0;
+}
+.house .dropcloth {
+  fill: #e9e3d3;
+  stroke: #cfc8b4;
+  stroke-width: 2;
+}
+.house .ladder line {
+  stroke: #e07a22;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+.house .ladder .rung {
+  stroke: #b85f12;
+  stroke-width: 4;
+}
+.house .can rect {
+  fill: #c9c9c4;
+  stroke: #8d8d87;
+}
+.house .can .can-label {
+  fill: #e07a22;
+  stroke: none;
+}
+.house .can path {
+  stroke: #8d8d87;
+  stroke-width: 2.5;
+}
+.house .roller rect:first-child {
+  fill: #f1ede2;
+  stroke: #8a8780;
+  stroke-width: 3;
+}
+.house .roller path {
+  stroke: #6e6a60;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.house .roller-handle {
+  fill: #6e6a60;
+}
+.house .sparkle path {
+  fill: #fff;
+  stroke: #f08a24;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+/* step 0: weathered */
+.house[data-step='0'] .peel,
+.house[data-step='0'] .grime {
+  opacity: 1;
+}
+/* step 1: washed */
+.house[data-step='1'] {
+  --sd-base: #c1bdb0;
+  --tr: #e4dfce;
+  --dr: #928d80;
+}
+.house[data-step='1'] .peel {
+  opacity: 1;
+}
+/* step 2: scraped, flakes on the ground */
+.house[data-step='2'] {
+  --sd-base: #c4c0b3;
+  --tr: #e4dfce;
+  --dr: #928d80;
+}
+.house[data-step='2'] .peel {
+  opacity: 1;
+}
+.house[data-step='2'] .peel path {
+  fill: #d9b98f;
+  stroke: transparent;
+}
+.house[data-step='2'] .flakes {
+  opacity: 1;
+}
+/* step 3: primed and caulked, gear out */
+.house[data-step='3'] {
+  --sd-base: #eeeae0;
+  --tr: #f6f3ea;
+  --dr: #eeeae0;
+}
+.house[data-step='3'] .caulk,
+.house:is([data-step='3'], [data-step='4']) .ladder,
+.house:is([data-step='3'], [data-step='4']) .can,
+.house:is([data-step='3'], [data-step='4']) .dropcloth {
+  opacity: 1;
+}
+.house[data-step='3'] .flakes {
+  opacity: 1;
+}
+/* steps 4 to 6: finish coat in the chosen colors */
+.house:is([data-step='4'], [data-step='5'], [data-step='6']) {
+  --sd-base: #eeeae0;
+  --tr: var(--trim);
+  --dr: var(--door);
+}
+.house:is([data-step='4'], [data-step='5'], [data-step='6']) .wipe {
+  animation: wipe 1.5s var(--ease) forwards;
+}
+.house[data-step='4'] .roller {
+  opacity: 1;
+  animation: rollerGo 1.5s var(--ease) forwards;
+}
+@keyframes wipe {
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes rollerGo {
+  from {
+    transform: translateX(120px);
+  }
+  85% {
+    opacity: 1;
+  }
+  to {
+    transform: translateX(660px);
+    opacity: 0;
+  }
+}
+/* step 6: walk-around sparkle */
+.house[data-step='6'] .sparkle {
+  opacity: 1;
+}
+.house[data-step='6'] .sparkle path {
+  animation: twinkle 1.8s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.house[data-step='6'] .sparkle path:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.house[data-step='6'] .sparkle path:nth-child(3) {
+  animation-delay: 1s;
+}
+@keyframes twinkle {
+  0%,
+  100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .lab-stage {
+    position: static;
+  }
+  .lab-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .lab-steps li p {
+    padding-left: 3.9rem;
+  }
+}
+@media (max-width: 520px) {
+  .lab-controls .btn-orange {
+    flex: 1 1 100%;
+  }
+  .lab-arrows {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .lab-caption {
+    font-size: 0.68rem;
+  }
+}

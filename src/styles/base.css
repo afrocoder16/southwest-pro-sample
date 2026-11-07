@@ -1,0 +1,410 @@
+/* ------------------------------------------------------------------
+   Southwest Pro Painting: design sample
+   Palette comes from Ryan's logo (charcoal + blue) and his yard sign (blue + orange stripes).
+   Signature devices: painter's-tape labels, paint-chip photo cards, cut-line dividers.
+------------------------------------------------------------------- */
+
+:root {
+  --paper: #f5f1e8;
+  --paper-2: #ebe4d3;
+  --card: #fffdf8;
+  --ink: #1b2228;
+  --ink-2: #48535c; /* 6.9:1 on paper */
+  --blue: #1880c0; /* the logo's "pro" blue */
+  --blue-deep: #0f5f93; /* text-safe blue, 6.3:1 on paper, white on it 6.6:1 */
+  --blue-tape: #1672ad;
+  --night: #0f2536;
+  --night-2: #17364d;
+  --sky: #8fcdf0;
+  --orange: #f08a24; /* from the yard sign stripes; always paired with dark text */
+  --orange-deep: #b95a06; /* shadows and borders only */
+  --orange-ink: #8f4300; /* orange for small text on light backgrounds, 5.6:1 on paper */
+  --line: rgba(27, 34, 40, 0.16);
+
+  --display: 'Bricolage Grotesque', 'Arial Black', system-ui, sans-serif;
+  --body: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --radius: 14px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --max: 1240px;
+  --header-h: 68px;
+  --bar-h: 76px; /* mobile sticky bar */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+img {
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--display);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0;
+  text-wrap: balance;
+}
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+a {
+  color: var(--blue-deep);
+  text-underline-offset: 0.2em;
+}
+a:hover {
+  color: var(--ink);
+}
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.on-dark :focus-visible,
+.sheet :focus-visible {
+  outline-color: var(--sky);
+}
+
+.skip {
+  position: absolute;
+  left: 12px;
+  top: -80px;
+  z-index: 100;
+  background: var(--ink);
+  color: #fff;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+}
+.skip:focus {
+  top: 12px;
+}
+
+.vh {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.wrap {
+  width: min(100% - var(--gutter) * 2, var(--max));
+  margin-inline: auto;
+}
+
+section {
+  position: relative;
+}
+.section {
+  padding-block: clamp(56px, 8vw, 112px);
+}
+.section.tight {
+  padding-block: clamp(36px, 5vw, 64px);
+}
+
+/* ---------- type helpers ---------- */
+.h-xl {
+  font-size: clamp(2.6rem, 6.8vw, 5.6rem);
+  line-height: 0.93;
+  letter-spacing: -0.04em;
+}
+.h-lg {
+  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  line-height: 0.98;
+}
+.h-md {
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.lead {
+  font-size: clamp(1.08rem, 1.5vw, 1.25rem);
+  color: var(--ink-2);
+  max-width: 38em;
+}
+.on-dark .lead {
+  color: #c7d5e0;
+}
+.muted {
+  color: var(--ink-2);
+}
+.small {
+  font-size: 0.9rem;
+}
+
+/* ---------- painter's tape label ---------- */
+.tape {
+  display: inline-block;
+  background: var(--blue-tape);
+  color: #fff;
+  font: 700 0.72rem/1 var(--body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.9rem;
+  transform: rotate(-1.2deg);
+  clip-path: polygon(0 0, 2.5% 14%, 0 30%, 2% 48%, 0 66%, 2.5% 84%, 0 100%, 100% 100%, 97.5% 86%, 100% 68%, 98% 50%, 100% 32%, 97.5% 14%, 100% 0);
+  white-space: nowrap;
+}
+.tape.is-orange {
+  background: var(--orange);
+  color: var(--ink);
+}
+.tape.is-paper {
+  background: #e6d8ac;
+  color: var(--ink);
+}
+.tape.is-night {
+  background: var(--night);
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 52px;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  font: 700 1.02rem/1.1 var(--body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), background 0.18s, color 0.18s;
+}
+.btn svg {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+}
+.btn:hover {
+  transform: translateY(-2px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+.btn-orange {
+  background: var(--orange);
+  color: var(--ink);
+  box-shadow: 0 3px 0 var(--orange-deep);
+}
+.btn-orange:hover {
+  color: var(--ink);
+  box-shadow: 0 5px 0 var(--orange-deep);
+}
+.btn-ink {
+  background: var(--ink);
+  color: #fff;
+}
+.btn-ink:hover {
+  color: #fff;
+  background: var(--night-2);
+}
+.btn-line {
+  border-color: var(--ink);
+  background: transparent;
+  color: var(--ink);
+}
+.btn-line:hover {
+  background: var(--ink);
+  color: #fff;
+}
+.on-dark .btn-line {
+  border-color: #fff;
+  color: #fff;
+}
+.on-dark .btn-line:hover {
+  background: #fff;
+  color: var(--ink);
+}
+.btn-sm {
+  min-height: 44px;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.95rem;
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+  color: var(--blue-deep);
+  text-decoration: none;
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 2px;
+}
+.link-arrow svg {
+  width: 1.1em;
+  height: 1.1em;
+  flex: none;
+}
+.link-arrow:hover {
+  color: var(--ink);
+}
+.on-dark .link-arrow {
+  color: var(--sky);
+}
+.on-dark .link-arrow:hover {
+  color: #fff;
+}
+
+/* ---------- section head with "cut line" ---------- */
+.head {
+  display: grid;
+  gap: 1.1rem;
+  margin-bottom: clamp(28px, 4vw, 52px);
+  max-width: 48rem;
+}
+.head .tape {
+  justify-self: start;
+}
+.cutline {
+  height: 6px;
+  border: 0;
+  margin: 0;
+  background:
+    linear-gradient(90deg, var(--ink) 0 100%) top / 100% 2px no-repeat,
+    repeating-linear-gradient(90deg, var(--blue) 0 38px, transparent 38px 46px) bottom / 100% 3px no-repeat;
+  opacity: 0.9;
+}
+
+/* ---------- paint-chip photo card ---------- */
+.chipcard {
+  position: relative;
+  margin: 0;
+  background: var(--card);
+  padding: 8px 8px 0;
+  border-radius: 6px;
+  box-shadow: 0 1px 0 rgba(27, 34, 40, 0.06), 0 18px 34px -16px rgba(15, 37, 54, 0.45);
+}
+.chipcard-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: var(--paper-2);
+  cursor: zoom-in;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.chipcard-btn img {
+  width: 100%;
+  aspect-ratio: var(--ar, 4 / 3);
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+.chipcard-btn:hover img {
+  transform: scale(1.035);
+}
+.chipcard figcaption {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  padding: 10px 4px 12px;
+}
+.swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+}
+.chipcard .cap {
+  font: 700 0.95rem/1.2 var(--body);
+  display: block;
+}
+.chipcard .sub {
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  display: block;
+}
+.chipcard .tape {
+  position: absolute;
+  left: -8px;
+  top: 14px;
+  z-index: 2;
+}
+
+/* ---------- reveal on scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  transition-delay: var(--d, 0s);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- dark sections ---------- */
+.on-dark {
+  background: var(--night);
+  color: #eef3f7;
+}
+.on-dark h2,
+.on-dark h3 {
+  color: #fff;
+}
