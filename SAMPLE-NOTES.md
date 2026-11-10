@@ -2,7 +2,7 @@
 
 Internal notes for Samson. **Not part of the site.** Last updated 7 Nov 2026.
 
-This is a private design sample. Nothing has been published, pushed, or sent to the owner. The company's live site
+This is a private design sample. It is published as an unofficial sample on GitHub Pages behind the Midvora visitor gate; nothing has been sent to the owner. The company's live site
 was only read (plain page and photo downloads). **Nothing in the sample links to it, and no form sends anything.**
 
 ---

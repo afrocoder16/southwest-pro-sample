@@ -1,7 +1,7 @@
 # Southwest Pro Painting: private design sample
 
 A private concept for **Southwest Pro Painting**, showing one way the company could present itself online. It is **not** the
-live website and it is **not published anywhere**. Nothing in it links to the real site, and none of its forms send anything.
+live website and it is an unofficial sample hosted on GitHub Pages behind a Midvora visitor gate. Nothing in it links to the real site, and none of its forms send anything.
 
 Read [`SAMPLE-NOTES.md`](SAMPLE-NOTES.md) before sharing it. It lists every fact, photo and name used, the placeholder offers, and
 everything the owner must confirm.
